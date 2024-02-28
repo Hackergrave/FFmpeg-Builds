@@ -18,6 +18,10 @@ env:
   DOCKER_BUILDKIT: 1
   HAVE_CLEANUP_PAT: ${{ secrets.CLEANUP_PAT != '' }}
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build_base:
     name: Build base image
