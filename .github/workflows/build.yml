@@ -231,9 +231,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Pull Docker image
-        run: docker pull ghcr.io/btbn/ffmpeg-builds:${{ matrix.target }}-${{ matrix.variant }}-cache
+        run: docker pull ghcr.io/btbn/ffmpeg-builds/${{ matrix.target }}-${{ matrix.variant }}:cache
       - name: Use Docker image
-        run: docker run ghcr.io/btbn/ffmpeg-builds:${{ matrix.target }}-${{ matrix.variant }}-cache
+        run: docker run ghcr.io/btbn/ffmpeg-builds/${{ matrix.target }}-${{ matrix.variant }}:cache
       - name: Build ffmpeg
         run: |
           T="$(echo -n ${{ github.token }} | sha256sum | head -c 64)" && echo -e "::add-mask::${T}\n::stop-commands::${T}"
