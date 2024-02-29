@@ -63,7 +63,7 @@ cat <<EOF >"$BUILD_SCRIPT"
     cd /ffbuild
     rm -rf ffmpeg prefix
 
-    git clone --filter=blob:none --branch='release/6.0' '$FFMPEG_REPO' ffmpeg
+    git clone --filter=blob:none --branch='$GIT_BRANCH' '$FFMPEG_REPO' ffmpeg
     cd ffmpeg
 
     ./configure --enable-muxer=av3a --enable-demuxer=av3a \
