@@ -33,6 +33,8 @@ for script in scripts.d/**/*.sh; do
     FF_LIBS+=" $(get_output $script libs)"
 done
 
+FF_CFLAGS+=" -DCONFIG_AV3A_DEMUXER=1 -DCONFIG_AV3A_MUXER=1"
+
 FF_CONFIGURE="$(xargs <<< "$FF_CONFIGURE")"
 FF_CFLAGS="$(xargs <<< "$FF_CFLAGS")"
 FF_CXXFLAGS="$(xargs <<< "$FF_CXXFLAGS")"
@@ -66,8 +68,7 @@ cat <<EOF >"$BUILD_SCRIPT"
     git clone --filter=blob:none --branch='$GIT_BRANCH' '$FFMPEG_REPO' ffmpeg
     cd ffmpeg
 
-    ./configure --enable-muxer=av3a --enable-demuxer=av3a \
-        --prefix=/ffbuild/prefix --pkg-config-flags="--static" \$FFBUILD_TARGET_FLAGS $FF_CONFIGURE \
+    ./configure --prefix=/ffbuild/prefix --pkg-config-flags="--static" \$FFBUILD_TARGET_FLAGS $FF_CONFIGURE \
         --extra-cflags='$FF_CFLAGS' --extra-cxxflags='$FF_CXXFLAGS' \
         --extra-ldflags='$FF_LDFLAGS' --extra-ldexeflags='$FF_LDEXEFLAGS' --extra-libs='$FF_LIBS' \
         --extra-version="\$(date +%Y%m%d)"
