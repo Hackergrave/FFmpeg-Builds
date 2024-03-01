@@ -33,8 +33,6 @@ for script in scripts.d/**/*.sh; do
     FF_LIBS+=" $(get_output $script libs)"
 done
 
-FF_CFLAGS+=" -DCONFIG_AV3A_DEMUXER=1 -DCONFIG_AV3A_MUXER=1"
-
 FF_CONFIGURE="$(xargs <<< "$FF_CONFIGURE")"
 FF_CFLAGS="$(xargs <<< "$FF_CFLAGS")"
 FF_CXXFLAGS="$(xargs <<< "$FF_CXXFLAGS")"
