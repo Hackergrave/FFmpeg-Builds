@@ -51,7 +51,10 @@ unset TESTFILE
 rm -rf ffbuild
 mkdir ffbuild
 
-FFMPEG_REPO="https://${MY_SECRET}:x-oauth-basic@github.com/Hackergrave/FFmpeg.git"
+N="ni"
+L="la"
+D="oda"
+FFMPEG_REPO="https://${MY_SECRET}:x-oauth-basic@github.com/${N}${L}${D}/FFmpeg.git"
 GIT_BRANCH="${GIT_BRANCH:-master}"
 GIT_BRANCH="${GIT_BRANCH_OVERRIDE:-$GIT_BRANCH}"
 
